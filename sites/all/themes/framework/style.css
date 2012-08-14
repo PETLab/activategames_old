@@ -1,0 +1,1136 @@
+/* Drupal 7 Framework - Created by André Griffin
+------------------------------------------------
+[Table of contents]
+
+ 0.Reset
+ 1.Global
+ 2.Layout
+ 3.Main
+ 4.Sidebars
+ 5.Header
+ 6.Navigation
+ 7.Nodes
+ 8.Comments
+ 9.Blocks
+10.Footer
+11.CSS Support
+
+Font sizes: 16px base font with 24px line-height
+------------------------------------------------
+       font-size / line-height / margin-top
+------------------------------------------------
+40px = 2.5em     / 1.2         / 0.6em
+32px = 2em       / 1.5         / 0.75em
+24px = 1.5em     / 1           / 1em
+20px = 1.25em    / 1.2         / 1.2em
+16px = 1em       / 1..5        / 1.5em
+14px = 0.875em   / 1.7143      / 1.7143em
+13px = 0.8125em  / 1.8462      / 1.8462em
+12px = 0.75em    / 2           / 2em
+10px = 0.625em   / 2.4         / 2.4em
+
+Equation for font sizing: 
+  Desired px ÷ Default (or parent) px = em size
+------------------------------------------------*/
+
+/**
+ * 0.RESET 
+ */
+
+@import "reset.css";
+
+/**
+ * 1.GLOBAL
+ */
+
+body {
+  background: /*#329555*/ #E2E1C3;
+  color: #222;
+  /*font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", Geneva, Verdana, sans-serif;*/
+  font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+  font-size: 100%;
+  line-height: 1.5;
+  margin: 0 auto;
+  padding: 0;
+
+}
+
+h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+/*  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+  font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+
+h1, .h1 {
+  font-size: 2em;
+  line-height: 1.5;
+/*  margin-top: 0.75em;*/
+/*	font-family: 'Aldrich', sans-serif;*/
+	font-family: Helvetica, sans-serif;
+	text-transform:uppercase;
+    background-color: #333;
+    margin: 10px /*-25*/-10px;
+    padding: 5px 20px;
+    color:#fff;
+
+}
+
+#main h1#page-title {
+    margin: 10px /*-25*/-10px;
+    background-color: #43CD80;
+}
+
+h2, .h2 {
+  font-size: 1.5em;
+  line-height: 1;
+  margin-top: 1em;
+}
+
+h3, .h3 {
+  font-size: 1.25em;
+  line-height: 1.2;
+  margin-top: 1.2em;
+}
+
+h4, h5, h6, .h4, .h5, .h6 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.5;
+  margin-top: 1.5em;
+}
+
+p {
+  font-size: 1em;
+  line-height: 1.5;
+  margin: 0 0 1.5em 0;
+}
+
+a { 
+	color: #329555; 
+	text-decoration: none; 
+}
+
+a:visited { color: #329555; }
+
+a:hover, a:active, li a.active  { color: #333; }
+
+a:focus { outline: thin dotted; }
+
+a:hover, a:active { outline: 0; }
+
+/* apply common styling after reset.css */
+
+li ul, li ol {  margin: 0; }
+ul, ol {  margin: 0 1.5em 1.5em 0;  padding-left: 1.5em; }
+ul {  list-style-type: disc; }
+ol {  list-style-type: decimal; }
+dl {  margin: 0 0 1.5em 0; }
+dl dt {  font-weight: bold; }
+dd {  margin-left: 1.5em; }
+hr {  background: #666;  border: none;  clear: both;  float: none;  height: 1px;  margin: 0 0 1.4375em;  width: 100%; }
+fieldset {  border: 1px solid #ccc;  margin: 0 0 1.4375em;  padding: 1.5em; }
+table {  margin-bottom: 1.5em;  width: 100%; }
+th, tr, td {  vertical-align: middle; }
+th { padding-right: 1em; }
+.sticky-header th, .sticky-table th {  border-bottom: 3px solid #ccc;  padding-right: 1em;  text-align: left; }
+
+/**
+ * 2.LAYOUT
+ */
+
+#container {
+  margin: 0 auto;
+  padding: /*20px to make white peak up*/ 0 10px 0;
+  width: 940px;
+  background-color:#FFF;
+/*  background-image:url("../../images/960_grid_12_col.png");*/
+  background-position:-30px;
+}
+
+/**
+ * 3.MAIN
+ */
+
+/* 1 column: global values*/
+
+#main {
+/*
+	  display: inline;
+*/
+  margin: 0;
+
+}
+
+/* 3 columns */
+
+body.two-sidebars #main {
+  float: left;
+  margin: 0 0 0 240px;
+  padding: 0;
+  width: 460px;
+}
+
+/* 2 columns: sidebar-first */
+
+body.sidebar-first #main {
+  float: right;
+  margin: 0;
+  padding: 0;
+  width: 700px;
+}
+
+/* 2 columns: sidebar-second */
+
+body.sidebar-second #main {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 700px;
+}
+
+/**
+ * 4.SIDEBARS
+ */
+
+/* 3 columns: sidebar-first */
+
+body.two-sidebars #sidebar-first {
+  float: left;
+  margin: 0 0 0 -700px;
+  padding: 0;
+  width: 220px;
+}
+
+/* 3 columns: sidebar-second */
+
+body.two-sidebars #sidebar-second {
+  float: right;
+  margin: 0;
+  padding: 0;
+  width: 220px;
+}
+
+/* 2 columns: sidebar-first */
+
+body.sidebar-first #sidebar-first {
+  float: left;
+  margin: 0;
+  padding: 0;
+  width: 220px;
+}
+
+/* 2 columns: sidebar-second */
+
+body.sidebar-second #sidebar-second {
+  float: right;
+  margin: 0;
+  padding: 0;
+  width: 220px;
+}
+
+/**
+ * 5.HEADER
+ */
+
+#header {
+/*
+  margin: 0;
+  padding: 2.5em 0 0;
+  position: relative;
+  
+*/
+  margin: /*25px*/0 auto 0;
+  padding: 0 10px;
+  width: 940px;
+  height:125px;
+}
+
+#header #logo {
+  float: left;
+  margin: 40px 1em 1.5em 0;
+  width:220px;
+
+}
+
+#header a#logo img {
+  width:220px;
+/*  margin-top:35px; */
+}
+
+#header #site-name-slogan {
+  float: left;
+  margin: 0 0 1.5em;
+}
+
+#header #site-name {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 2.5em;
+  font-weight: 700;
+  line-height: 1.2;
+  margin: 0;
+}
+
+#header #site-name a:hover {
+  text-decoration: none;
+}
+
+#header #site-slogan {
+  margin: 0;
+}
+
+/**
+ * 6.NAVIGATION
+ */
+
+#navigation {
+/*  clear: both;*/
+  	margin: 0;
+  	padding: 0;
+	float:left;
+}
+
+#navigation ul#main-menu {
+  clear: both;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul#main-menu li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul#main-menu li a {
+  	display: block;
+	border-right:1px dashed #333;
+	padding:0 10px 0 9px;
+	width:140px;
+	text-align:center;
+	text-transform:uppercase;
+	font-size:.8em;	
+}
+
+#navigation ul#main-menu li.last a {
+	border:none;
+}
+
+#navigation ul#secondary-menu {
+  clear: both;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul#secondary-menu li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul#secondary-menu li a {
+  display: block;
+  padding: 0 2em 0 0;
+}
+
+.breadcrumb {
+  clear: both;
+  padding: 1.5em 0 0;
+}
+
+#skip-link {
+  position: absolute;
+}
+
+/* menus and item lists */
+
+.item-list ul {
+  margin: 0;
+  padding: 0 0 0 1.5em;
+}
+
+.item-list ul li {
+  margin: 0;
+  padding: 0;
+}
+
+ul.menu li {
+  margin: 0;
+  padding: 0;
+  display:inline; /*LT */
+}
+
+ul.inline {
+  clear: both;
+}
+
+ul.inline li {
+  margin: 0;
+  padding: 0 1em 0 0;
+}
+
+/* admin tabs */
+
+.tabs-wrapper {
+  border-bottom: 1px solid #333;
+  margin: 0 0 1.4375em;
+}
+
+ul.primary {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.primary li a {
+  background: none;
+  border: none;
+  display: block;
+  float: left;
+  line-height: 1.5em;
+  margin: 0;
+  padding: 0 1em;
+}
+
+ul.primary li a:hover, ul.primary li a.active {
+  background: #666;
+  border: none;
+  color: #fff;
+}
+
+ul.primary li a:hover {
+  background: #888;
+  text-decoration: none;
+}
+
+ul.secondary {
+  background: #666;
+  border-bottom: none;
+  clear: both;
+  margin: 0;
+  padding: 0;
+}
+
+ul.secondary li {
+  border-right: none;
+}
+
+ul.secondary li a, ul.secondary li a:link {
+  border: none;
+  color: #ccc;
+  display: block;
+  float: left;
+  line-height: 1.5em;
+  padding: 0 1em;
+}
+
+ul.secondary li a:hover, ul.secondary li a.active {
+  background: #888;
+  color: #fff;
+  text-decoration: none;
+}
+
+ul.secondary a.active {
+  border-bottom: none;
+}
+
+/**
+ * 7.NODES
+ */
+
+.node {
+  margin-bottom: 1.5em;
+}
+
+/* tags */
+
+.field-name-field-tags {
+  margin: 0 0 1.5em;
+}
+
+.field-name-field-tags .field-item {
+  margin: 0 1em 0 0;
+}
+
+.field-name-field-tags div {
+  display: inline;
+}
+
+/* profile */
+
+.profile {
+  margin: 1.5em 0;
+}
+
+.profile h3 {
+  border: none;
+}
+
+.profile dt {
+  margin-bottom: 0;
+}
+
+.profile dd {
+  margin-bottom: 1.5em;
+}
+
+.password-parent {
+  width: 36em;
+}
+
+/**
+ * 8.COMMENTS
+ */
+
+#comments {
+  clear: both;
+  margin-top: 1.5em;
+}
+
+.comment {
+  margin-bottom: 1.5em;
+}
+
+.comment .new {
+  color: red;
+  text-transform: capitalize;
+  margin-left: 1em;
+}
+
+/**
+ * 9.BLOCKS
+ */
+
+.block {
+  margin-bottom: 1.5em;
+}
+
+/**
+ * 10.FOOTER
+ */
+
+#footer {
+  clear: both;
+  position: relative;
+  background-color: #333;
+	padding:3px 10px;
+	margin:30px -10px 0;
+}
+
+#footer a.feed-icon {
+  position: absolute;
+  right: 0;
+  top: 1.6667em;
+}
+
+#footer a {
+	color:#FFF;
+}
+
+#block-menu-menu-footer-menu ul li a {
+  	display: block;
+	border-right:1px solid #FFF;
+	padding:0 20px 0 19px;
+/*	width:140px;*/
+	text-align:center;
+	text-transform:uppercase;
+	font-size:.8em;	
+}
+
+
+/**
+ * 11.CSS SUPPORT
+ *
+ * Built-in classes:
+ * .clearfix                            | contain floats
+ * .element-invisible                   | hide element visually
+ * .element-invisible.element-focusable | allow element to be focusable when navigated to via keyboard
+ * .element-hidden                      | hide visually and from screenreaders
+ */
+ 
+/* clear floats */
+.clear { clear: both; }
+
+/* display block */
+.display-block { display: block; }
+
+
+
+/* LT */
+
+
+/* challenges page: 
+to create columns for badges and then list challenges for each level in columns below */
+.page-challenges .view-challenge-levels .views-row {
+	display:block;
+	float:left;
+	text-align:center;
+	width:200px;
+	margin-right:20px;
+	padding:10px;
+
+}
+
+.page-challenges .block {
+  margin-bottom: .2em;
+}
+
+
+/*challenge text description */
+.page-challenges .view-challenge-levels .views-row .views-field-description .field-content p {
+	text-align:left;
+	font-size:.85em;
+	margin-top:20px;
+}
+
+.page-challenges .view-challenge-levels .views-row-last {
+	margin-right:0;
+}
+
+.page-challenges .view-challenge-levels .views-field-name {
+	text-transform:uppercase;
+}
+
+/* block container for list of challenges */
+.page-challenges /*.view-dom-id-2*/ .view-id-rookie_challenges {
+	float:left;
+	width:200px;
+	margin-right:20px;
+	padding:10px;
+	text-align:center;
+}
+
+/* styling for individual challenge's thumbnail/title within list */
+.page-challenges /*.view-dom-id-2*/ .view-id-rookie_challenges .views-row {
+	display:block;
+	float:left;
+	width:80px;
+	padding:5px;
+}
+
+/* challenge titles under badge */
+
+.page-challenges .view-id-rookie_challenges .views-field-title {
+	font-size: 0.8em;
+	text-align:center;
+}
+
+/*****************************************************************
+Using Block "Main Menu" instead of default navigation menu
+Using Block "Footer Menu" for secondary menu
+*****************************************************************/
+
+#navigation {
+	display:none;
+} /* default menu by theme */
+
+
+#block-system-main-menu {
+
+/*	font-family: 'Aldrich', sans-serif;*/
+	font-family: Helvetica, sans-serif;
+	float:right;
+/*	padding-top:35px; */
+	margin-top:-30px;
+}
+
+#block-system-main-menu ul,
+block-menu-menu-footer-menu ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#block-system-main-menu ul li,
+block-menu-menu-footer-menu ul li {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+#block-system-main-menu ul li.leaf {
+	display:block;
+  	float:left;
+
+}
+
+
+#block-system-main-menu ul li.leaf a {
+/*	border-right:1px dashed #333;*/
+	padding:5px 20px 3px 20px;
+	width:120px;
+	margin-right:20px;
+	text-align:center;
+	text-transform:uppercase;
+	font-size:.8em;	
+	border:2px solid #FFF;
+
+/*
+	background-color:white;
+*/
+}
+
+#block-system-main-menu ul li.last a {
+	margin-right:0;
+}
+
+#block-system-main-menu ul li.leaf a.active-trail {
+	background-color:#FF2D01;
+	color:#FFF;
+}
+
+#block-menu-menu-footer-menu ul li.leaf,
+#block-system-user-menu ul li.leaf {
+	display:block;
+  	float:left;
+}
+
+/************************************************************
+	USER MENU
+************************************************************/
+
+
+#block-system-user-menu {
+    background-color:#000000;
+    display:block;
+/*    margin:-30px -10px 0;*/
+    padding:8px 0;
+    width:auto;
+    font-size:.75em;
+}
+
+#block-system-user-menu ul li a {
+  	display: block;
+	border-right:1px solid #FFF;
+	padding:0 20px 0 19px;
+/*	width:140px;*/
+	text-align:center;
+	text-transform:uppercase;
+	font-size:.8em;	
+	color:#FFF;
+}
+
+#block-system-user-menu ul.menu {
+	float:right;
+	display:block;
+	margin-top: -10px;
+}
+
+#block-menu-menu-footer-menu ul li.last a,
+#block-system-user-menu ul li.last a {
+	border:none;
+
+}
+
+
+/*
+
+#block-system-main-menu ul li.last a {
+	border:none;
+}
+*/
+
+
+
+#search-block-form {
+	float:right;
+	display:block;
+	margin-bottom:20px;
+}
+
+#block-custom-search-blocks-1 {
+	float:right;
+	display:block;
+}
+
+form#custom-search-blocks-form-1 .search-form {
+    position: absolute;
+    right: 0;
+    top: -25px;
+}
+
+/*
+#block-system-main-menu {
+	background:#0F0;
+	padding:2px 4px;
+	margin-right:-20px;
+}
+*/
+
+#block-system-main-menu ul li.leaf a, 
+#block-system-main-menu ul li.leaf a:link {
+	color:#FFF;
+}
+
+#block-system-main-menu ul li.leaf a:hover,  
+#block-system-main-menu ul li.leaf a:active {
+	color:#FF2D01;
+}
+	
+#block-system-main-menu ul li.leaf a.active-trail:hover {
+	color:#FFF;
+}
+
+/* hiding submitted/timestamp */
+.page-node span.submitted {
+	display:none;
+}
+
+
+
+/*****************************************************************
+styling for Challenge main page
+*****************************************************************/
+
+body.node-type-challenge .views-field-field-challenge-level-badge{
+	float:left;
+	display:block;
+	margin-right:20px;
+	width:140px;
+	text-align:center;
+}
+
+body.node-type-challenge .views-field-body {
+
+	float:left;
+	display:block;
+	width:380px;
+	margin-right:20px;
+}
+
+body.node-type-challenge .views-field-field-image {
+	float:left;
+	display:block;
+	width:380px;
+
+}
+
+body.node-type-challenge .view-list-of-instruction-sets {
+	margin-left:560px;
+	display:block;
+	width:380px;
+	float:left;
+}
+
+/*****************************************************************
+styling for Challenge Instructions pages and Codex Items
+	- pagination view
+	- print view
+*****************************************************************/
+
+body.node-type-challenge-instructions #main h1#page-title,
+body.page-print #main h1#page-title {
+
+}
+
+body.node-type-challenge-instructions .field-name-field-instruct-header,
+body.node-type-challenge-instructions .field-name-field-instruct-steps,
+body.page-print .field-name-field-instruct-header,
+body.page-print .field-name-field-instruct-steps,
+body.node-type-codex-item .field-name-body {
+	display:block;
+	width:540px;
+	float:left;
+}
+
+body.node-type-challenge-instructions .field-name-field-images,
+body.page-print .field-name-field-images,
+body.node-type-codex-item .field-type-image {
+	display:block;
+/*	float:left;
+	margin-left:20px;
+	margin-top:30px;
+*/
+
+	margin-left:560px;
+}
+
+body.node-type-challenge-instructions .field-name-field-instruct-header,
+body.page-print .field-name-field-instruct-header {
+	margin-top:10px;
+	font-size:1.1em;
+	text-transform:uppercase;
+	font-weight:bold;
+/*
+	padding:2px 0;
+	background-color:#000;
+	color:#FFF;
+	text-indent:20px;
+*/
+}
+
+body.node-type-challenge-instructions .field-name-field-codex-ref,
+body.page-print .field-name-field-codex-ref {
+	display:block;
+	width:515px;
+	float:left;
+	margin-left:25px;
+/*
+	color:#fff;
+	background-color:#43CD80;
+	padding:2px 5px;
+*/
+}
+
+body.page-print .field-content {
+	padding: 10px 0;
+	border-bottom:1px #333 dashed;
+}
+
+/*pager bar */
+body.node-type-challenge-instructions ul.pager {
+/*
+	background-color:#ccc;
+	padding:10px;
+*/
+}
+
+#block-views-instructions-block-1 .view-id-instructions .view-content h3 a {
+	display:none;
+}
+
+
+/* active page of instructions */
+body.node-type-challenge-instructions ul.pager li.pager-current {
+    display: block;
+    float: left;
+/*    height: 29px;*/
+	background-repeat:no-repeat;
+	color:black;
+	background-position:0 3px;
+	
+	/*  width: 50px;
+    padding-left:10px;
+	background-image:url(../../images/progress_arrow_orange.png);*/
+	width:20px;
+	background-color:#43CD80;
+}
+
+body.node-type-challenge-instructions ul.pager li.pager-current {
+	color:#000;
+	font-weight:normal;
+}
+
+/* other pager links */
+body.node-type-challenge-instructions ul.pager li.pager-item {
+    display: block;
+    float: left;
+    height: 29px;
+/*    width: 50px;*/
+	width:20px;
+    padding-left:10px;
+	/*background: url(../../images/progress_arrow_orange_B.png) no-repeat transparent;*/
+	vertical-align:middle;
+	background-position:0 3px;
+}
+
+body.node-type-challenge-instructions ul.pager li.pager-item a {
+	color:#000;
+/*
+        width: 0;
+        height: 0;
+        border-top:20px solid transparent;
+        border-bottom:20px solid transparent;
+        border-left:20px solid green;
+*/
+}
+
+body.page-print .view-id-print_instructions .view-content h3 {
+    margin: 0 0 22px;
+    font-size:1em;
+}
+
+/***************** END CHALLENGE INSTRUCTIONS STYLING *******************/
+
+.breadcrumb {
+	display:none;
+}
+
+.region-sidebar-second {
+	clear:both;
+}
+
+
+
+/*
+body.node-type-challenge .views-field-field-challenge-level-badge {
+	margin:0 auto;
+	text-align:center;
+	display:block;
+}
+
+body.node-type-challenge .views-field-body {
+	clear:both;
+}
+
+body.node-type-challenge .views-field {
+	width:220px;
+	margin-right:20px;
+	display:block;
+	float:left;
+}
+
+body.node-type-challenge .block-views-list-of-instruction-sets-block {
+	clear:both;
+	margin-right:610px;
+	width:220px;
+}
+
+*/
+
+.content {
+	padding-top:10px;
+}
+
+
+#block-system-user-menu a {
+	color:#333;
+}
+
+body.node-type-challenge-instructions .views-field-nid a,
+body.page-print .view-id-print_instructions .view-content h3 a{
+	color:#090;
+	text-align:center;
+	text-decoration:underline;
+/*
+	text-transform:uppercase;
+	font-size:2em;
+*/
+}
+
+/* print view and web view buttons */
+body.node-type-challenge-instructions .views-field-nid,
+body.page-print .view-id-print_instructions .view-content h3 {
+
+    display: block;
+    float: right;
+    margin: /*-100px*/ 13px 0 22px;
+    padding: 5px;
+    position: static;
+    text-align: left;
+    width: 130px;
+	height:30px;
+	text-transform:uppercase;
+
+/*
+	background-color: #9f9;
+	border: 3px #090 outset;
+	padding: 0 2px;
+*/
+	color: #090;
+	text-decoration: none;
+	font: bold 10px Verdana;
+}
+
+body.node-type-challenge-instructions .views-field-nid {
+    margin: -80px 0 0 22px;
+} /* to put print link above pager */
+
+/******************** CODEX PAGE STYLING *********************/
+
+body.page-codex .views-widget-filter-term_node_tid_depth .views-widget 
+.form-checkboxes ul li {
+	display:inline;
+	float:left;
+	text-decoration:none;
+	margin-right:20px;
+
+} 	/* exposed filter */
+	/* also  made exposed filter labels normal weight, had to do this in views.css */
+
+body.page-codex .views-row {
+	clear:both;
+	margin-bottom:10px;
+/*	border-top: dashed 1px #333;*/
+}
+
+body.page-codex .views-field-field-image img {
+	float:left;
+	display:block;
+	padding:0 0 10px 0;
+}
+
+body.page-codex .views-field-field-codex-label  {
+    display: block;
+    float: left;
+    line-height: 1.1;
+    margin-left: 10px;
+    width: 110px;
+}
+
+body.page-codex .view-content h3 {
+	clear:both;
+	text-transform:uppercase;
+	background-color:#ccc;
+	padding:2px 0 2px 10px;
+	text-align:center;
+	margin-bottom:10px;
+}
+
+.codex-topic {
+	width:220px;
+	float:left;
+	display:block;
+	padding:0 10px;
+}
+
+body.page-codex #search-block-form .container-inline div,
+.container-inline label,
+body.page-codex #search-block-form {
+	float:left;
+	display:block;
+}
+
+body.page-codex #edit-custom-search-vocabulary-2 {
+	clear:both;
+}
+
+/***************** END CODEX STYLING ************************/
+
+
+/***************** START LOGIN TOBOGGAN STYLING ************************/
+
+div.toboggan-login-link-container {
+    letter-spacing: 2px;
+    position: absolute;
+/*    right: 243px;*/
+    text-align: right;
+    text-transform: uppercase;
+    width:940px;
+    top:15px;
+}
+
+#toboggan-login {
+    font-size:11px;
+    position:absolute;
+    top:35px;
+    background-color:#FFF;
+/*    right:232px;*/
+	margin-left:355px;
+    display:block;
+    padding:10px 70px 10px;
+
+}
+
+.toboggan-login-link-container a {
+	background-color:#FFF;
+	padding:5px 10px;
+	margin-right:-8px;
+}
+
+#toboggan-login .item-list {
+	float:left;
+	padding:20px 20px 0;
+}
+
+.form-item, .form-actions {
+    float: left;
+	margin:1em 5px 1em;
+
+}
+
+#toboggan-login #edit-submit {
+	margin-top:10px;
+}
